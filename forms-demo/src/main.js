@@ -37,8 +37,6 @@ class PokemonForm extends React.Component {
           value={this.state.pokeName}
           onChange={this.handlePokeNameChange}
         />
-      <p>name:</p>
-      <p>{this.state.pokeName}</p>
       </form>
     )
   }
@@ -48,9 +46,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pokemonLookup: [],
+      pokemonLookup: {},
       pokemonSelected: null,
-      pokemonNameError: 'abc',
+      pokemonNameError: null,
     }
     this.pokemonSelect = this.pokemonSelect.bind(this)
   }
@@ -84,7 +82,7 @@ class App extends React.Component {
       //make a request ot the pokemon api and do something on state to store the pokemon details to be displayed to the user
       superagent.get(this.state.pokemonLookup[name])
       .then(res => {
-        console.log('selected pokemon', res.body)
+        // console.log('selected pokemon', res.body)
         this.setState({
           pokemonSelected: res.body,
           pokemonNameError: null,
@@ -101,11 +99,19 @@ class App extends React.Component {
         { this.state.pokemonNameError ?
           <div>
             <h2>pokemon {this.state.pokemonNameError} does not exist</h2>
-            <p>Make another request</p>
+            <p>Make another request!</p>
           </div> :
-          <div>
-            <h2>selected {this.state.pokemonSelected.name}</h2>
-          </div>}
+        <div>
+          { this.state.pokemonSelected ?
+            <div>
+              <h2>selected {this.state.pokemonSelected.name}</h2>
+            </div> :
+            <div>
+              <p>make a request</p>
+            </div>
+          }
+        </div>
+        }
     </div>
     )
   }
