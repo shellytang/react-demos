@@ -105,6 +105,18 @@ class App extends React.Component {
           { this.state.pokemonSelected ?
             <div>
               <h2>selected {this.state.pokemonSelected.name}</h2>
+              <h3>abilities</h3>
+              <ul>
+                { this.state.pokemonSelected.abilities.map((item, i) => {
+                  return (
+                    <li key={i}>
+                      <p>{item.ability.name}</p>
+                    </li>
+                  )
+                }
+
+                )}
+              </ul>
             </div> :
             <div>
               <p>make a request</p>
