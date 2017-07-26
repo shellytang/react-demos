@@ -7,6 +7,7 @@ const API_URL = 'http://www.reddit.com/r';
 //* App - manage app state
 //  *SearchForm -- collect user input and call handleSearch function
 //  *SearchResultsList -- display reddit articles
+let renderIf = (test, component) => test ? component : undefined;
 
 class SearchForm extends React.Component {
   constructor(props) {
@@ -52,7 +53,7 @@ class SearchResultsList extends React.Component {
       <ul>
         {articles.map((item, i) =>
           <li key={i}>
-            <a href={item.data.url}>{item.data.title}</a>
+            <a href={item.data.url} target="_blank">{item.data.title}</a>
           </li>
         )}
       </ul>
@@ -100,7 +101,10 @@ class App extends React.Component {
           title='Reddit board'
           handleSearch={this.redditBoardFetch}
         />
-        <SearchResultsList articles={this.state.results || []} />
+        {renderIf(this.state.results,
+          <SearchResultsList articles={this.state.results} />)}
+        {renderIf(this.state.searchErrorMessage,
+          <p>{this.state.searchErrorMessage}</p>)}
       </main>
     );
   }
