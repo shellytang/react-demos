@@ -2,7 +2,8 @@
   "scripts": {
     "lint": "eslint .",
     "watch": "webpack-dev-server --inline --hot",
-    "build": "webpack"
+    "build": "webpack",
+    "test": "jest"
   },
   "dependencies": {
     "babel-core": "^6.25.0",
@@ -23,8 +24,12 @@
     "webpack-dev-server": "^2.6.1"
   },
   "devDependencies": {
+    "babel-jest": "^20.0.3",
+    "enzyme": "^2.9.1",
     "eslint": "^4.3.0",
-    "eslint-plugin-react": "^7.1.0"
+    "eslint-plugin-react": "^7.1.0",
+    "jest": "^20.0.4",
+    "react-test-renderer": "^15.6.1"
   },
   "name": "budget-tracker",
   "version": "1.0.0",
