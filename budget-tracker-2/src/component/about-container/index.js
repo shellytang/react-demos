@@ -1,8 +1,14 @@
 import React from 'react';
+import Navbar from '../navbar';
 
 class AboutContainer extends React.Component {
   render() {
-    return <p>About</p>;
+    return (
+      <div className='about-container'>
+        <Navbar />
+        <p>About</p>
+      </div>
+    );
   }
 }
 

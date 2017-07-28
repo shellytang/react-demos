@@ -1,26 +1,40 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import {BrowserRouter, Route, Link} from 'react-router-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
 
 import AboutContainer from './component/about-container';
 import DashboardContainer from './component/dashboard-container';
 
 class App extends React.Component {
+  //constructor
+  constructor(props) {
+    super(props);
+    this.state = {
+      total: 400,
+      expenses: [],
+    };
+    this.getApp = this.getApp.bind(this);
+  }
+  //hooks
+  componentDidUpdate() {
+    console.log('___STATE___', this.state);
+  }
+
+  //methods
+  getApp() {
+    return {
+      state: this.state,
+      setState: this.setState.bind(this),
+    };
+  }
+
   render() {
     return (
       <main className='app'>
-        <header>
-          <h1>Budget Tracker</h1>
-          <nav>
-            <ul>
-              <li><a href='/'> Dashboard </a></li>
-              <li><a href='/about'> About </a></li>
-            </ul>
-          </nav>
-        </header>
         <BrowserRouter>
           <div>
-            <Route exact path='/' component={DashboardContainer} />
+            <Route exact path='/'
+              component={() => <DashboardContainer app={this.getApp()}/>}/>
             <Route exact path='/about' component={AboutContainer} />
           </div>
         </BrowserRouter>
