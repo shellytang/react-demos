@@ -1,7 +1,7 @@
 import React from 'react';
 import uuid from 'uuid/v1';
 import Navbar from '../navbar';
-import ExpenseCreateForm from '../expense-create-form';
+import ExpenseForm from '../expense-form';
 import ExpenseList from '../expense-list';
 
 class DashboardContainer extends React.Component {
@@ -9,8 +9,11 @@ class DashboardContainer extends React.Component {
     super(props);
 
     this.expenseCreate = this.expenseCreate.bind(this);
+    this.expenseRemove = this.expenseRemove.bind(this);
+    this.expenseUpdate = this.expenseUpdate.bind(this);
   }
   // hooks
+
   //methods
   expenseCreate(expense) {
     expense.id = uuid();
@@ -18,6 +21,23 @@ class DashboardContainer extends React.Component {
     //immutably add the new expense to the old expense array on apps state
     app.setState(prevState => ({
       expenses: prevState.expenses.concat([expense]),
+    }));
+  }
+  expenseRemove(expense) {
+    let {app} = this.props;
+    app.setState(prevState => ({
+      expenses: prevState.expenses.filter((item) => {
+        return item.id !== expense.id;
+      }),
+    }));
+  }
+
+  expenseUpdate(expense) {
+    let {app} = this.props;
+    app.setState(prevState => ({
+      expenses: prevState.expenses.map((item) => {
+        return item.id === expense.id ? expense : item;
+      }),
     }));
   }
 
@@ -33,8 +53,13 @@ class DashboardContainer extends React.Component {
         <p>Total Budget: {app.state.total}</p>
         <p>Total Spent: {totalSpent}</p>
         <p>Remaining Budget: {remainingBudget}</p>
-        <ExpenseCreateForm expenseCreate={this.expenseCreate} />
-        <ExpenseList expenses={app.state.expenses} />
+        <ExpenseForm
+          handleSubmit={this.expenseCreate}
+          submitTitle='add expense'/>
+        <ExpenseList
+          expenseRemove={this.expenseRemove}
+          expenseUpdate={this.expenseUpdate}
+          expenses={app.state.expenses} />
       </div>
     );
   }

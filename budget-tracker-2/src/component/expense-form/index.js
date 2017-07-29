@@ -1,8 +1,10 @@
 import React from 'react';
 
-class ExpenseCreateForm extends React.Component {
+class ExpenseForm extends React.Component {
   constructor(props) {
     super(props);
+    let title = props.expense ? props.expense.title : '';
+    let price = props.expense ? props.expense.price : 0;
 
     this.state = {
       title: '',
@@ -33,13 +35,13 @@ class ExpenseCreateForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.expenseCreate(this.state);
+    this.props.handleSubmit(this.state);
   }
 
   render() {
     return (
       <form
-        className='expense-create-form'
+        className='expense-form'
         onSubmit={this.handleSubmit}>
 
         <input
@@ -56,10 +58,10 @@ class ExpenseCreateForm extends React.Component {
           onChange={this.handleChange}
         />
 
-        <button type='submit'>add expense</button>
+        <button type='submit'>{this.props.submitTitle}</button>
       </form>
     );
   }
 }
 
-export default ExpenseCreateForm;
+export default ExpenseForm;
