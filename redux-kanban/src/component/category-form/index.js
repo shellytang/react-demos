@@ -9,7 +9,6 @@ class CategoryForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  //if a new category is being passed in update the state to reflect the change
   componentWillReceiveProps(props) {
     if(props.category) {
       this.setState(props.category)

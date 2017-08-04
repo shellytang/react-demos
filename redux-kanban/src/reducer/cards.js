@@ -1,5 +1,5 @@
 let validateCategory = (payload) => {
-  if(!payload || !payload.title || !payload.timestamp) {
+  if(!payload.id || !payload.title || !payload.timestamp) {
     throw new Error('VALIDATION ERROR: card must have ittle and timestamp')
   }
 }
@@ -20,6 +20,7 @@ export default(state=initalState, action) => {
   switch(type) {
 
   case 'CATEGORY_CREATE':
+    validateCategory(payload)
     return {...state, [payload.id]: []}
 
   case 'CATEGORY_DELETE':
@@ -29,7 +30,7 @@ export default(state=initalState, action) => {
   case 'CARD_CREATE':
     validateCard(payload)
     categoryID = payload.categoryID
-    let categoryCards = state[categoryID]
+    categoryCards = [...state[categoryID]]
     return {...state, [categoryID]: [...categoryCards, payload]}
 
   case 'CARD_UPDATE':
