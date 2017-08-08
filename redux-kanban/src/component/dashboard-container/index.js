@@ -16,7 +16,6 @@ class DashboardContainer extends React.Component {
   }
 
   render(){
-    // console.log('categories', this.props.categories)
     return (
       <main className='dashboard-container'>
         <h2> dashboard </h2>

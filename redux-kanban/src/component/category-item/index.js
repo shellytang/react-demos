@@ -7,11 +7,13 @@ import {
 
 import CategoryForm from '../category-form'
 import CardForm from '../card-form'
+import CardItem from '../card-item'
 import {cardCreate} from '../../action/card-actions.js'
 
 class CategoryItem extends React.Component {
   render() {
-    let {category, categoryUpdate, categoryDelete} = this.props
+    let {category, categoryUpdate, categoryDelete, cards} = this.props
+    console.log('cards', cards)
     return (
       <div className='category-item'>
         <header>
@@ -34,7 +36,9 @@ class CategoryItem extends React.Component {
             onComplete={this.props.cardCreate}
           />
           <ul>
-            cards will go here
+            {cards.map(card =>
+              <CardItem key={card.id} card={card} />
+            )}
           </ul>
         </main>
       </div>
@@ -43,7 +47,9 @@ class CategoryItem extends React.Component {
   }
 }
 
-let mapStateToProps = () => ({})
+let mapStateToProps = (state, props) => ({
+  cards: state.cards[props.category.id],
+})
 let mapDispatchToProps = dispatch => ({
   categoryUpdate: (category) => dispatch(categoryUpdate(category)),
   categoryDelete: (category) => dispatch(categoryDelete(category)),
