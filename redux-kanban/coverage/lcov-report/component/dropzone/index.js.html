@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for component/card-form/index.js</title>
+    <title>Code coverage report for component/dropzone/index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,28 +16,28 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">All files</a> / <a href="index.html">component/card-form</a> index.js
+      <a href="../../index.html">All files</a> / <a href="index.html">component/dropzone</a> index.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/14</span>
+        <span class='fraction'>0/17</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/8</span>
+        <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/5</span>
+        <span class='fraction'>0/6</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/14</span>
+        <span class='fraction'>0/17</span>
       </div>
     </div>
   </div>
@@ -91,29 +91,27 @@
 46
 47
 48
-49</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -125,6 +123,32 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -140,53 +164,65 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react'
+import {classToggler} from '../../lib/util.js'
+// props
+// * onComplete -- will invoke onDrop with the dataTransferItem
 &nbsp;
-class CardForm extends React.Component{
-<span class="fstat-no" title="function not covered" >  co</span>nstructor(props){
+class Dropzone extends React.Component {
+<span class="fstat-no" title="function not covered" >  co</span>nstructor(props) {
 <span class="cstat-no" title="statement not covered" >    super(props)</span>
-<span class="cstat-no" title="statement not covered" >    this.state = props.card</span>
-      ? {...props.card}
-      : {content: '', categoryID: props.categoryID}
-&nbsp;
-<span class="cstat-no" title="statement not covered" >    this.handleChange=this.handleChange.bind(this)</span>
-<span class="cstat-no" title="statement not covered" >    this.handleSubmit=this.handleSubmit.bind(this)</span>
+<span class="cstat-no" title="statement not covered" >    this.state = {</span>
+      dropReady: false,
+    }
+<span class="cstat-no" title="statement not covered" >    this.handleDragOver = this.handleDragOver.bind(this)</span>
+<span class="cstat-no" title="statement not covered" >    this.handleDrop = this.handleDrop.bind(this)</span>
+<span class="cstat-no" title="statement not covered" >    this.handleDragEnter = this.handleDragEnter.bind(this)</span>
+<span class="cstat-no" title="statement not covered" >    this.handleDragLeave = this.handleDragLeave.bind(this)</span>
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  co</span>mponentWillReceiveProps(props){
-<span class="cstat-no" title="statement not covered" >    if(props.card)</span>
-<span class="cstat-no" title="statement not covered" >      this.setState({...props.card})</span>
-<span class="cstat-no" title="statement not covered" >    if(props.categoryID)</span>
-<span class="cstat-no" title="statement not covered" >      this.setState({categoryID: props.categoryID})</span>
+<span class="fstat-no" title="function not covered" >  ha</span>ndleDragEnter(e) {
+<span class="cstat-no" title="statement not covered" >    this.setState({dropReady: true})</span>
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  ha</span>ndleChange(e){
-<span class="cstat-no" title="statement not covered" >    this.setState({content: e.target.value})</span>
+<span class="fstat-no" title="function not covered" >  ha</span>ndleDragLeave(e) {
+<span class="cstat-no" title="statement not covered" >    this.setState({dropReady: false})</span>
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  ha</span>ndleSubmit(e){
+<span class="fstat-no" title="function not covered" >  ha</span>ndleDragOver(e) {
 <span class="cstat-no" title="statement not covered" >    e.preventDefault()</span>
-<span class="cstat-no" title="statement not covered" >    this.props.onComplete(this.state)</span>
-<span class="cstat-no" title="statement not covered" >    if(!this.props.card)</span>
-<span class="cstat-no" title="statement not covered" >      this.setState({content: ''})</span>
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  re</span>nder(){
-<span class="cstat-no" title="statement not covered" >    return(</span>
-      &lt;form className='card-form' onSubmit={this.handleSubmit} &gt;
-        &lt;input
-          type='text'
-          name='content'
-          placeholder= 'content'
-          value={this.state.content}
-          onChange={this.handleChange}
-        /&gt;
-        &lt;button type='submit'&gt; {this.props.buttonText} &lt;/button&gt;
-      &lt;/form&gt;
+<span class="fstat-no" title="function not covered" >  ha</span>ndleDrop(e) {
+<span class="cstat-no" title="statement not covered" >    e.preventDefault()</span>
+<span class="cstat-no" title="statement not covered" >    try {</span>
+      let item = <span class="cstat-no" title="statement not covered" >JSON.parse(e.dataTransfer.getData('application/json'))</span>
+<span class="cstat-no" title="statement not covered" >      this.props.onComplete(null, item)</span>
+    } catch(error) {
+<span class="cstat-no" title="statement not covered" >      this.props.onComplete(error)</span>
+    }
+<span class="cstat-no" title="statement not covered" >    this.setState({dropReady: false})</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  re</span>nder() {
+    let className = <span class="cstat-no" title="statement not covered" >classToggler({</span>
+      'dropzone': true,
+      'drop-ready': this.state.dropReady,
+    })
+<span class="cstat-no" title="statement not covered" >    return (</span>
+      &lt;div
+        className={className}
+        onDragOver={this.handleDragOver}
+        onDrop={this.handleDrop}
+        onDragEnter={this.handleDragEnter}
+        onDragLeave={this.handleDragLeave}
+      &gt;
+        {this.props.children}
+      &lt;/div&gt;
     )
   }
 }
 &nbsp;
-export default CardForm
+export default Dropzone
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->

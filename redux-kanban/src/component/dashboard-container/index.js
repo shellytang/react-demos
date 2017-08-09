@@ -1,4 +1,4 @@
-import './_dashboard-container.scss'
+// import './_dashboard-container.scss'
 
 import React from 'react'
 import {connect} from 'react-redux' // function used to wrap our components to attach them to the store
