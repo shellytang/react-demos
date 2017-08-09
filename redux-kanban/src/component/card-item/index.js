@@ -1,22 +1,47 @@
 import React from 'react'
 import {connect} from 'react-redux'
+
+import {renderIf} from '../../lib/util.js'
 import Draggable from '../draggable'
 import CardForm from '../card-form'
 import {cardUpdate, cardDelete} from '../../action/card-actions.js'
 
 class CardItem extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      editing: false,
+    }
+    this.handleCardUpdate = this.handleCardUpdate.bind(this)
+  }
+
+  handleCardUpdate(card) {
+    this.props.cardUpdate(card)
+    this.setState({editing: false})
+  }
+
   render() {
     let {card, cardUpdate, cardDelete} = this.props
     return (
       <li className='card-item'>
         <Draggable dataTransferItem={card}>
-          <p>{card.content}</p>
-          <button onClick= {() => cardDelete(card)}>delete</button>
-          <CardForm
-            card={card}
-            buttonText='update card'
-            onComplete={cardUpdate}
-          />
+          {renderIf(!this.state.editing,
+            <div onDoubleClick={() => this.setState({editing: true})}>
+              <p>{card.content}</p>
+              <button onClick= {() => cardDelete(card)}>delete</button>
+            </div>
+          )}
+
+          {renderIf(this.state.editing,
+            <div>
+              <CardForm
+                card={card}
+                buttonText='update card'
+                onComplete={this.handleCardUpdate}
+              />
+              <button onClick={() => this.setState({editing: false})}>cancel</button>
+            </div>
+          )}
         </Draggable>
       </li>
     )
