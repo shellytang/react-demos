@@ -23,8 +23,11 @@ class CategoryItem extends React.Component {
   handleDropzoneComplete(err, card) {
     if(err)
       return console.error(err)
+    // remove from old category
     this.props.cardDelete(card)
+    // update new category ID
     card.categoryID = this.props.category.id
+    //insert into new category
     this.props.cardInsert(card)
   }
 
