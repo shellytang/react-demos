@@ -5,6 +5,11 @@ export const cardCreate = (card) => ({
   payload: {...card, id: uuid()},
 })
 
+export const cardInsert = (card) => ({
+  type: 'CARD_CREATE',
+  payload: {...card},
+})
+
 export const cardUpdate = (card) => ({
   type: 'CARD_UPDATE',
   payload: {...card},

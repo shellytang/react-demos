@@ -1,3 +1,5 @@
+import './_dashboard-container.scss'
+
 import React from 'react'
 import {connect} from 'react-redux' // function used to wrap our components to attach them to the store
 
@@ -13,6 +15,10 @@ import CategoryItem from '../category-item'
 
 class DashboardContainer extends React.Component {
   componentDidMount(){
+    this.props.categoryCreate({title: 'ready'})
+    this.props.categoryCreate({title: 'in progress'})
+    this.props.categoryCreate({title: 'review'})
+    this.props.categoryCreate({title: 'done'})
   }
 
   render(){
