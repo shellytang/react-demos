@@ -19,15 +19,15 @@ let plugins = [
   new DefinePlugin({
     __DEBUG__: JSON.stringify(!production),
     __API_URL__: JSON.stringify(process.env.API_URL),
-  })
-]
+  }),
+];
 
 // production plugins
 if(production) {
   plugins = plugins.concat([
     new CleanPlugin(),
     new UglifyPlugin(),
-  ])
+  ]);
 }
 
 // export config
