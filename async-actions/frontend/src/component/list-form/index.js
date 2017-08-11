@@ -1,6 +1,6 @@
 import React from 'react';
 
-class ListForm extends React.Components {
+class ListForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = props.list ? props.list : {title: ''};
@@ -24,15 +24,19 @@ class ListForm extends React.Components {
 
   render() {
     return (
-      <form className='list-form' onSubmit={this.handleSubmit}>
+      <form
+        className='list-form'
+        onSubmit={this.handleSubmit}>
         <input
           name='title'
           type='text'
           placeholder='title'
           value={this.state.title}
-          onChange={this.state.onChange} />
+          onChange={this.handleChange} />
         <button type='submit'>{this.props.buttonText}</button>
       </form>
     );
   }
 }
+
+export default ListForm;
