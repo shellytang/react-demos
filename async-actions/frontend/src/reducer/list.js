@@ -9,6 +9,8 @@ let validateList = (payload) => {
 export default (state=[], action) => {
   let {type, payload} = action;
   switch(type) {
+  case 'LIST_SET':
+    return payload;
   case 'LIST_CREATE':
     validateList(payload);
     return [payload, ...state];
