@@ -4,10 +4,14 @@
   "main": "index.js",
   "license": "MIT",
   "jest": {
-    "moduleNameMapper": {
-      "\\.(svg|eof|ttf|woff|woff2|scss|gif)$": "<rootDir>/src/__test__/lib/mock-asset.js"
-    }
-  },
+      "globals": {
+        "__DEBUG__": true,
+        "__API_URL__": "http://localhost:7777"
+      },
+      "moduleNameMapper": {
+        "\\.(svg|eof|ttf|woff|woff2|scss|gif)$": "<rootDir>/src/__test__/lib/mock-asset.js"
+      }
+    },
   "scripts": {
     "test": "jest",
     "lint": "eslint .",
